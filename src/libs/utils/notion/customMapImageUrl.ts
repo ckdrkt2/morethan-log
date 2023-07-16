@@ -2,6 +2,7 @@ import { Block } from 'notion-types'
 
 export const customMapImageUrl = (url: string, block: Block): string => {
   console.log(url)
+  console.log(url)
   if (!url) {
     throw new Error("URL can't be empty")
   }
@@ -39,11 +40,9 @@ export const customMapImageUrl = (url: string, block: Block): string => {
     url = `https://www.notion.so${url}`
   }
 
-  if (!url.startsWith('https://')) {
-    url = `https://www.notion.so${
-        url.startsWith('/image') ? url : `/image/${encodeURIComponent(url)}`
-    }`
-  }
+  url = `https://www.notion.so${
+      url.startsWith('/image') ? url : `/image/${encodeURIComponent(url)}`
+  }`
 
   const notionImageUrlV2 = new URL(url)
   let table = block.parent_table === 'space' ? 'block' : block.parent_table
@@ -55,6 +54,7 @@ export const customMapImageUrl = (url: string, block: Block): string => {
   notionImageUrlV2.searchParams.set('cache', 'v2')
 
   url = notionImageUrlV2.toString()
-
+  console.log(url)
+  console.log(url)
   return url
 }
