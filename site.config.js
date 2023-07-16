@@ -6,7 +6,7 @@ const CONFIG = {
     role: "MLOps Engineer",
     bio: "Hi",
     email: "bbiuyy@gmail.com",
-    linkedin: "morethanmin",
+    linkedin: "changshin-yoo-4885271b1",
     github: "ckdrkt2",
     instagram: "",
   },
@@ -18,7 +18,7 @@ const CONFIG = {
   ],
   // blog setting (required)
   blog: {
-    title: "morethan-log",
+    title: "ckdrkt2",
     description: "welcome to morethan-log!",
     theme: "auto", // ['light', 'dark', 'auto']
   },
