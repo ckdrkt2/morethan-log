@@ -70,8 +70,12 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        env:
+          NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
       - name: Static HTML export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
+        env:
+          NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
