@@ -1,8 +1,6 @@
 import { Block } from 'notion-types'
 
 export const customMapImageUrl = (url: string, block: Block): string => {
-  console.log(url)
-  console.log(url)
   if (!url) {
     throw new Error("URL can't be empty")
   }
@@ -54,7 +52,5 @@ export const customMapImageUrl = (url: string, block: Block): string => {
   notionImageUrlV2.searchParams.set('cache', 'v2')
 
   url = notionImageUrlV2.toString()
-  console.log(url)
-  console.log(url)
   return url
 }
