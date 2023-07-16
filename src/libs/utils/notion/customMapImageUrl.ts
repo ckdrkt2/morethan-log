@@ -38,9 +38,11 @@ export const customMapImageUrl = (url: string, block: Block): string => {
     url = `https://www.notion.so${url}`
   }
 
-  url = `https://www.notion.so${
-    url.startsWith('/image') ? url : `/image/${encodeURIComponent(url)}`
-  }`
+  if (!url.startsWith('https://')) {
+    url = `https://www.notion.so${
+        url.startsWith('/image') ? url : `/image/${encodeURIComponent(url)}`
+    }`
+  }
 
   const notionImageUrlV2 = new URL(url)
   let table = block.parent_table === 'space' ? 'block' : block.parent_table
