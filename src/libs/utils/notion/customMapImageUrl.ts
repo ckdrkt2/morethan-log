@@ -1,6 +1,7 @@
 import { Block } from 'notion-types'
 
 export const customMapImageUrl = (url: string, block: Block): string => {
+  console.log(url)
   if (!url) {
     throw new Error("URL can't be empty")
   }
