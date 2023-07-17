@@ -5,42 +5,42 @@ export const customMapImageUrl = (url: string, block: Block): string => {
     throw new Error("URL can't be empty")
   }
 
-  if (url.startsWith('data:')) {
-    return url
-  }
-
-  // more recent versions of notion don't proxy unsplash images
-  if (url.startsWith('https://images.unsplash.com')) {
-    return url
-  }
-
-  try {
-    const u = new URL(url)
-
-    if (
-      u.pathname.startsWith('/secure.notion-static.com') &&
-      u.hostname.endsWith('.amazonaws.com')
-    ) {
-      if (
-        u.searchParams.has('X-Amz-Credential') &&
-        u.searchParams.has('X-Amz-Signature') &&
-        u.searchParams.has('X-Amz-Algorithm')
-      ) {
-        // if the URL is already signed, then use it as-is
-        url = u.origin + u.pathname
-      }
-    }
-  } catch {
-    // ignore invalid urls
-  }
-
-  if (url.startsWith('/images')) {
-    url = `https://www.notion.so${url}`
-  }
-
-  url = `https://www.notion.so${
-      url.startsWith('/image') ? url : `/image/${encodeURIComponent(url)}`
-  }`
+  // if (url.startsWith('data:')) {
+  //   return url
+  // }
+  //
+  // // more recent versions of notion don't proxy unsplash images
+  // if (url.startsWith('https://images.unsplash.com')) {
+  //   return url
+  // }
+  //
+  // try {
+  //   const u = new URL(url)
+  //
+  //   if (
+  //     u.pathname.startsWith('/secure.notion-static.com') &&
+  //     u.hostname.endsWith('.amazonaws.com')
+  //   ) {
+  //     if (
+  //       u.searchParams.has('X-Amz-Credential') &&
+  //       u.searchParams.has('X-Amz-Signature') &&
+  //       u.searchParams.has('X-Amz-Algorithm')
+  //     ) {
+  //       // if the URL is already signed, then use it as-is
+  //       url = u.origin + u.pathname
+  //     }
+  //   }
+  // } catch {
+  //   // ignore invalid urls
+  // }
+  //
+  // if (url.startsWith('/images')) {
+  //   url = `https://www.notion.so${url}`
+  // }
+  //
+  // url = `https://www.notion.so${
+  //     url.startsWith('/image') ? url : `/image/${encodeURIComponent(url)}`
+  // }`
 
   const notionImageUrlV2 = new URL(url)
   let table = block.parent_table === 'space' ? 'block' : block.parent_table
