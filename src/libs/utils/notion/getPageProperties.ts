@@ -23,6 +23,8 @@ async function getPageProperties(
           try {
             const Block = block?.[id].value
             const url: string = val[0][1][0][1]
+            console.log(url)
+            console.log(Block)
             const newurl = customMapImageUrl(url, Block)
             properties[schema[key].name] = newurl
           } catch (error) {
